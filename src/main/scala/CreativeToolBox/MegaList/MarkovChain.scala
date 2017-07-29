@@ -7,7 +7,7 @@ class MarkovChain {
     var states = new ArrayBuffer[String]
 
     override def toString: String = {
-        this.states.toString
+        this.states.mkString(", ")
     }
 }
 
