@@ -1,24 +1,22 @@
 package CreativeToolBox.Megalist
 
+import scala.collection.mutable.ArrayBuffer
+
 class MarkovChain {
 
-    private var _initialState = ""
-
-    def initialState = _initialState
-
-    def initialState_= (in:String):Unit = _initialState = in
+    var states = new ArrayBuffer[String]
 
     override def toString: String = {
-        this.initialState
+        this.states.toString
     }
 }
 
 object MarkovChain {
 
-    def apply(ss: String) = {
+    def apply(in: String) = {
 
         var mc = new MarkovChain
-        mc.initialState = ss
+        in.split("\\s+").distinct.foreach { mc.states.append(_) }
         mc
 
     }
