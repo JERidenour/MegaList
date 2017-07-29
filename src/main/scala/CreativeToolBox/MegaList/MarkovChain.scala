@@ -2,14 +2,14 @@ package CreativeToolBox.Megalist
 
 class MarkovChain {
 
-    private var _startState = ""
+    private var _initialState = ""
 
-    def startState = _startState
+    def initialState = _initialState
 
-    def startState_= (in:String):Unit = _startState = in
+    def initialState_= (in:String):Unit = _initialState = in
 
     override def toString: String = {
-        this.startState
+        this.initialState
     }
 }
 
@@ -18,7 +18,7 @@ object MarkovChain {
     def apply(ss: String) = {
 
         var mc = new MarkovChain
-        mc.startState = ss
+        mc.initialState = ss
         mc
 
     }
