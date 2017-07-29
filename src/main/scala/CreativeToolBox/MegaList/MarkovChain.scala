@@ -13,9 +13,3 @@ class MarkovChain {
     }
 
 }
-
-object MarkovChain {
-
-
-
-}
