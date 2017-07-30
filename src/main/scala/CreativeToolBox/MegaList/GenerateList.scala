@@ -13,7 +13,7 @@ object GenerateList{
         bufferedSource.close
 
         /*
-        * Note: order 3 adds two words at a time, order 4 three words, etc
+        * Note: the order parameter is basically how many words there are per node
         */
         var chain = MarkovChain(fileContents, 2)
         val maxLength = 3
