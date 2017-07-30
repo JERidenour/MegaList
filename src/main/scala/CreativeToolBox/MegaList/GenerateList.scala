@@ -11,10 +11,12 @@ object GenerateList{
         bufferedSource.close
 
         var chain = MarkovChain(fileContents, 5)
+        val maxLength = 4
         for ( i <- 1 to 10 ) {
 
             var randChar = scala.util.Random.alphanumeric.filter(_.isLetter).head
-            println(chain.simulate(randChar, 2))
+            var randInt = scala.util.Random.nextInt( (maxLength) ) 
+            println(chain.simulate(randChar, randInt))
 
         }
     }
