@@ -11,6 +11,7 @@ object GenerateList{
         bufferedSource.close
 
         var chain = MarkovChain(fileContents, 4)
-        println(chain.simulate(' ', 5))
+        println(chain.states.length)
+        println(chain.simulate('a', 5))
     }
 }

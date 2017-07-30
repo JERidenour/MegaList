@@ -44,7 +44,11 @@ class MarkovChain {
                 this.currentState = possibleStates.apply(index)
             }
         }
-        sim.mkString
+
+        // use letters:
+        //sim.mkString
+        // use words:
+        sim.mkString(" ")
     } 
 
     /*
@@ -63,7 +67,10 @@ object MarkovChain {
     def apply(in: String, order: Int) = {
 
         var mc = new MarkovChain
-        for(i <- 0 to (in.length-order)){ mc.states += in.substring(i, i+order)  }
+        // to use letters
+        //for(i <- 0 to (in.length-order)){ mc.states += in.substring(i, i+order)  }
+        // to use words
+        in.split("\\s+").foreach { mc.states.append(_) }
         mc
 
     }
