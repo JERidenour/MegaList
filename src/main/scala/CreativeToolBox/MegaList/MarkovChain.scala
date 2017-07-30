@@ -33,6 +33,9 @@ class MarkovChain {
             possibleStates = this.states
                 .filter(  _(0) == this.currentState( this.currentState.length-1 ) )
             index = rnd.nextInt( possibleStates.length )
+            //TODO: handle case where possibleStates has length = 0
+
+            println( s"index = $index" )
             this.currentState = possibleStates.apply(index)
             // TODO: make sure the index is always valid
             sim += this.currentState
