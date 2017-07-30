@@ -10,8 +10,8 @@ object GenerateList{
         val fileContents = bufferedSource.getLines.mkString
         bufferedSource.close
 
-        var chain = MarkovChain(fileContents, 4)
-        println(chain.states.length)
-        println(chain.simulate('a', 5))
+        var chain = MarkovChain(fileContents, 5)
+        val randChar = scala.util.Random.alphanumeric.filter(_.isLetter).head
+        println(chain.simulate(randChar, 2))
     }
 }
