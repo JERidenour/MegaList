@@ -5,12 +5,18 @@ import scala.collection.mutable.ArrayBuffer
 class MarkovChain {
 
     var states = new ArrayBuffer[String]
+    private var _currentState = " " 
+    
+    def currentState = _currentState
+    
+    def currentState_= (in: String):Unit = _currentState = in
 
     def simulate(sChar: Char): String = {
         val possibleStates = this.states.filter( _(0) == sChar )
         var rnd = new scala.util.Random
-        var index = 0 + rnd.nextInt( ( (possibleStates.length-1) - 0) + 1 )
-        possibleStates.apply(index) 
+        var index = rnd.nextInt( possibleStates.length )
+        this.currentState = possibleStates.apply(index) 
+        this.currentState
     } 
 
     /*
