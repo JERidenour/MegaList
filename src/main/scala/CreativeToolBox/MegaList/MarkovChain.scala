@@ -19,9 +19,8 @@ object MarkovChain {
     /*
     * Return a MarkovChain object with states for each word in a string
     */
-    def apply(in: String) = {
+    def apply(in: String, order: Int) = {
 
-        val order = 3
         var mc = new MarkovChain
         for(i <- 0 to (in.length-order)){ mc.states += in.substring(i, i+order)  }
         mc
