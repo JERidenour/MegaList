@@ -34,6 +34,8 @@ class MarkovChain {
         var sim = new ArrayBuffer[String]
         while ( sim.length < (len + 1)  ) {
             sim += this.currentState
+    
+            //TODO: implement this for words, not letters:
             possibleStates = this.states
                 .filter(  _(0) == this.currentState( this.currentState.length-1 ) )
 
@@ -72,7 +74,10 @@ object MarkovChain {
         // to use letters
         //for(i <- 0 to (in.length-order)){ mc.states += in.substring(i, i+order)  }
         // to use words
-        in.split("\\s+").foreach { mc.states.append(_) }
+        val wordList = in.split("\\s+")
+        for(i <- 0 to (wordList.length-order)){ 
+            mc.states += wordList.slice(i, i+order).mkString(" ")
+         }
         mc
 
     }

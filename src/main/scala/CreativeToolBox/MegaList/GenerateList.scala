@@ -10,7 +10,7 @@ object GenerateList{
         val fileContents = bufferedSource.getLines.mkString
         bufferedSource.close
 
-        var chain = MarkovChain(fileContents, 5)
+        var chain = MarkovChain(fileContents, 3)
         val maxLength = 4
         for ( i <- 1 to 10 ) {
 
