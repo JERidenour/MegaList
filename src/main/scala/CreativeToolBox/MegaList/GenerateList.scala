@@ -15,20 +15,22 @@ object GenerateList{
         /*
         * Note: order 3 adds two words at a time, order 4 three words, etc
         */
-        var chain = MarkovChain(fileContents, 3)
+        var chain = MarkovChain(fileContents, 2)
         val maxLength = 3
-//        for ( i <- 1 to 15 ) {
-//
-//            var randInt = scala.util.Random.nextInt( (maxLength) ) 
-//	    println(randInt + 1 )
-//            println(chain.simulate(randInt))
-//
-//        }
+	var outString = ""
+        for ( i <- 1 to 300 ) {
 
-	//println(chain.simulate(100))
+            var randInt = scala.util.Random.nextInt( (maxLength) ) 
+            outString += "\n " + chain.simulate(randInt)
+
+        }
+
+	//val outString = chain.simulate(100)
+	//println(outString))
 
 	val outputFile = "src/main/resources/Output.txt"
-	Files.write(Paths.get(outputFile), chain.simulate(100).getBytes(StandardCharsets.UTF_8))
+	Files.write(Paths.get(outputFile),outString 
+	    .getBytes(StandardCharsets.UTF_8))
 
     }
 }
