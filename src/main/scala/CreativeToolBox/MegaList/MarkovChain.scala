@@ -6,8 +6,11 @@ class MarkovChain {
 
     var states = new ArrayBuffer[String]
 
-    def simulate(sChar: String): String = {
-        
+    def simulate(sChar: Char): String = {
+        val possibleStates = this.states.filter( _(0) == sChar )
+        var rnd = new scala.util.Random
+        var index = 0 + rnd.nextInt( ( (possibleStates.length-1) - 0) + 1 )
+        possibleStates.apply(index) 
     } 
 
     /*
