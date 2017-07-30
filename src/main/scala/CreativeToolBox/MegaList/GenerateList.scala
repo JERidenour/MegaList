@@ -3,11 +3,12 @@ package CreativeToolBox.Megalist
 import scala.io.Source
 import java.nio.file.{Paths, Files}
 import java.nio.charset.StandardCharsets
+import scala.util.Random
 
 object GenerateList{
     def main(args: Array[String]) {
 
-        val inputFile = "src/main/resources/Full_Collection_of_Dylan_Thomas.txt"
+        val inputFile = "src/main/resources/The_quran.txt"
         val bufferedSource = Source.fromFile(inputFile)
         val fileContents = bufferedSource.getLines.mkString(" ")
         bufferedSource.close
@@ -20,7 +21,7 @@ object GenerateList{
 	var outString = ""
         for ( i <- 1 to 300 ) {
 
-            var randInt = scala.util.Random.nextInt( (maxLength) ) 
+            var randInt = Random.nextInt( (maxLength) ) 
             outString += "\n " + chain.simulate(randInt)
 
         }

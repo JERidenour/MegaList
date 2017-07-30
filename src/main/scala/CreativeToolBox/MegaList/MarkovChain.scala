@@ -24,10 +24,13 @@ class MarkovChain {
         this.currentState = initialState
 
         // repeat either until the desired length is achived        
-        // or until the model runs out of states
         var sim = new ArrayBuffer[String]
         while ( sim.length < (len + 1)  ) {
+
+	    // break the current state into individual words
             val wordList = this.currentState.split("\\s+")
+
+	    // add all words but the first to the simulated string
             sim += wordList.tail.mkString(" ")
   
             // valid states are those whose first word matches
@@ -45,6 +48,7 @@ class MarkovChain {
             }
         }
 
+	// finally return the entire string
         sim.mkString(" ")
     } 
 
