@@ -7,7 +7,7 @@ object GenerateList{
 
         val filename = "src/main/resources/dylan_thomas.txt"
         val bufferedSource = Source.fromFile(filename)
-        val fileContents = bufferedSource.getLines.mkString
+        val fileContents = bufferedSource.getLines.mkString(" ")
         bufferedSource.close
 
         /*
