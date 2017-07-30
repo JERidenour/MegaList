@@ -6,6 +6,10 @@ class MarkovChain {
 
     var states = new ArrayBuffer[String]
 
+    def simulate(sChar: String): String = {
+        
+    } 
+
     /*
     * Return the state strings separated by comma
     */
