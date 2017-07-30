@@ -5,7 +5,7 @@ object GenerateList{
 
         //val testString = "bbbabbabbbbaba"             
         val testString = "this is a test string with actual words"             
-        var chain = MarkovChain(testString, 3)
+        var chain = MarkovChain(testString, 4)
         println(chain.simulate('t', 5))
     }
 }

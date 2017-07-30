@@ -12,13 +12,20 @@ class MarkovChain {
     def currentState_= (in: String):Unit = _currentState = in
 
     def simulate(sChar: Char, length: Int): String = {
-        val possibleStates = this.states.filter( _(0) == sChar )
-        var rnd = new scala.util.Random
+        var possibleStates = this.states.filter( _(0) == sChar )
+        // TODO: handle cases where filter argument returns false
+        val rnd = new scala.util.Random
         var index = rnd.nextInt( possibleStates.length )
         this.currentState = possibleStates.apply(index) 
         
         var simulatedChain = new ArrayBuffer[String]
         while ( simulatedChain.length < (length + 1)  ) {
+            simulatedChain += this.currentState
+            possibleStates = this.states
+                .filter(  _(0) == this.currentState( this.currentState.length-1 ) )
+            index = rnd.nextInt( possibleStates.length )
+            this.currentState = possibleStates.apply(index)
+            // TODO: make sure the index is always valid
             simulatedChain += this.currentState
         }
         simulatedChain.mkString
