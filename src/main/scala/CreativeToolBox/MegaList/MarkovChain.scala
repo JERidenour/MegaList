@@ -34,10 +34,12 @@ class MarkovChain {
         var sim = new ArrayBuffer[String]
         while ( sim.length < (len + 1)  ) {
             sim += this.currentState
-    
-            //TODO: implement this for words, not letters:
+            val wordList = this.currentState.split("\\s+")
+   
+            // valid states are those whose first word matches
+            // the last word of the current state
             possibleStates = this.states
-                .filter(  _(0) == this.currentState( this.currentState.length-1 ) )
+                .filter(  _.split("\\s+").apply(0) == wordList.apply(wordList.length-1) )
 
             // if there are no possible states, revert to the initial state 
             // otherwise update
@@ -49,9 +51,6 @@ class MarkovChain {
             }
         }
 
-        // use letters:
-        //sim.mkString
-        // use words:
         sim.mkString(" ")
     } 
 
@@ -71,9 +70,6 @@ object MarkovChain {
     def apply(in: String, order: Int) = {
 
         var mc = new MarkovChain
-        // to use letters
-        //for(i <- 0 to (in.length-order)){ mc.states += in.substring(i, i+order)  }
-        // to use words
         val wordList = in.split("\\s+")
         for(i <- 0 to (wordList.length-order)){ 
             mc.states += wordList.slice(i, i+order).mkString(" ")
