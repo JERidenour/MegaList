@@ -17,6 +17,7 @@ class MarkovChain {
     */
     def simulate(sChar: Char, len: Int): String = {
 
+        //TODO: catch exception incase even ' ' is not a valid start character
         // get the set of states which start with sChar
         var possibleStates = this.states.filter( _(0) == sChar )
         if( possibleStates.length==0 ){ 
@@ -35,7 +36,7 @@ class MarkovChain {
         while ( sim.length < (len + 1)  ) {
             val wordList = this.currentState.split("\\s+")
             sim += wordList.tail.mkString(" ")
-   
+  
             // valid states are those whose first word matches
             // the last word of the current state
             possibleStates = this.states
