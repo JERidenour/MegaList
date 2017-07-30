@@ -33,8 +33,8 @@ class MarkovChain {
         // or until the model runs out of states
         var sim = new ArrayBuffer[String]
         while ( sim.length < (len + 1)  ) {
-            sim += this.currentState
             val wordList = this.currentState.split("\\s+")
+            sim += wordList.tail.mkString(" ")
    
             // valid states are those whose first word matches
             // the last word of the current state

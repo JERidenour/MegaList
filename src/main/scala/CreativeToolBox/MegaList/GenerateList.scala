@@ -11,7 +11,7 @@ object GenerateList{
         bufferedSource.close
 
         var chain = MarkovChain(fileContents, 3)
-        val maxLength = 4
+        val maxLength = 3
         for ( i <- 1 to 10 ) {
 
             var randChar = scala.util.Random.alphanumeric.filter(_.isLetter).head
