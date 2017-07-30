@@ -18,17 +18,17 @@ class MarkovChain {
         var index = rnd.nextInt( possibleStates.length )
         this.currentState = possibleStates.apply(index) 
         
-        var simulatedChain = new ArrayBuffer[String]
-        while ( simulatedChain.length < (length + 1)  ) {
-            simulatedChain += this.currentState
+        var sim = new ArrayBuffer[String]
+        while ( sim.length < (length + 1)  ) {
+            sim += this.currentState
             possibleStates = this.states
                 .filter(  _(0) == this.currentState( this.currentState.length-1 ) )
             index = rnd.nextInt( possibleStates.length )
             this.currentState = possibleStates.apply(index)
             // TODO: make sure the index is always valid
-            simulatedChain += this.currentState
+            sim += this.currentState
         }
-        simulatedChain.mkString
+        sim.mkString
     } 
 
     /*
