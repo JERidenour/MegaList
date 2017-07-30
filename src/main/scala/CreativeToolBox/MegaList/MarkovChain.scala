@@ -15,19 +15,12 @@ class MarkovChain {
     * Simulate a path of length [[len]] through the markov chain
     * with initial state chosen randomly from states starting with [[sChar]].
     */
-    def simulate(sChar: Char, len: Int): String = {
+    def simulate(len: Int): String = {
 
-        //TODO: catch exception incase even ' ' is not a valid start character
-        // get the set of states which start with sChar
-        var possibleStates = this.states.filter( _(0) == sChar )
-        if( possibleStates.length==0 ){ 
-            possibleStates = this.states.filter( _(0)=='A' )  
-        }
-
-        // draw at random from the resulting population, set this as current state
+        // draw at random from all possible states, set this as current state
         val rnd = new scala.util.Random
-        var index = rnd.nextInt( possibleStates.length )
-        val initialState = possibleStates.apply(index) 
+        var index = rnd.nextInt( this.states.length )
+        val initialState = this.states.apply(index) 
         this.currentState = initialState
 
         // repeat either until the desired length is achived        
@@ -39,7 +32,7 @@ class MarkovChain {
   
             // valid states are those whose first word matches
             // the last word of the current state
-            possibleStates = this.states
+            val possibleStates = this.states
                 .filter(  _.split("\\s+").apply(0) == wordList.apply(wordList.length-1) )
 
             // if there are no possible states, revert to the initial state 
@@ -69,7 +62,7 @@ object MarkovChain {
     * Return a MarkovChain object with states for each word in a string
     */
     def apply(in: String, order: Int) = {
-
+        
         var mc = new MarkovChain
         val wordList = in.split("\\s+")
         for(i <- 0 to (wordList.length-order)){ 
