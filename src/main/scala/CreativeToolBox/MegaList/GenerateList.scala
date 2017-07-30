@@ -14,7 +14,6 @@ object GenerateList{
         for ( i <- 1 to 10 ) {
 
             var randChar = scala.util.Random.alphanumeric.filter(_.isLetter).head
-            println(randChar)
             println(chain.simulate(randChar, 2))
 
         }

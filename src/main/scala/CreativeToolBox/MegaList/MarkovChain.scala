@@ -19,7 +19,9 @@ class MarkovChain {
 
         // get the set of states which start with sChar
         var possibleStates = this.states.filter( _(0) == sChar )
-        // TODO: handle cases where filter argument returns false (invalid sChar)
+        if( possibleStates.length==0 ){ 
+            possibleStates = this.states.filter( _(0)=='A' )  
+        }
 
         // draw at random from the resulting population, set this as current state
         val rnd = new scala.util.Random
