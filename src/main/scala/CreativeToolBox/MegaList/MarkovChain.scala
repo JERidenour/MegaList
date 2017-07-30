@@ -21,8 +21,9 @@ object MarkovChain {
     */
     def apply(in: String) = {
 
+        val order = 3
         var mc = new MarkovChain
-        in.split("\\s+").distinct.foreach { mc.states.append(_) }
+        for(i <- 0 to (in.length-order)){ mc.states += in.substring(i, i+order)  }
         mc
 
     }
