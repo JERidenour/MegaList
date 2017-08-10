@@ -4,6 +4,7 @@ import scala.io.Source
 import java.nio.file.{Paths, Files}
 import java.nio.charset.StandardCharsets
 import scala.util.Random
+import net.graphviz._
 
 object GenerateList{
     def main(args: Array[String]) {
@@ -33,17 +34,19 @@ object GenerateList{
 	//Files.write(Paths.get(outputFile),outString 
 	//    .getBytes(StandardCharsets.UTF_8))
 
+        var dot = new Dot()
+        chain.states.foreach { dot.nodeBuffer += Node.apply(_)  }
+
+        val N = chain.states.length
         for(s <- chain.states){
 
             //for each state, get companion states
             var keyWord = s.split(" ").last
             var compStates = chain.states.filter( (a:String) => a.split(" ").head == keyWord)
             
-            println(s) 
-            println(compStates) 
             //for each companion state, get prob and write edge
-            
-            
+            var prob = compStates.length / N
+                        
 
         }
     }
